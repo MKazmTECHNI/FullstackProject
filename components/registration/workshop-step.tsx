@@ -46,6 +46,12 @@ function WorkshopCard<T extends Workshop>({
     ai: "bg-destructive/10 text-destructive",
   };
 
+  const handleClick = () => {
+    if (!isDisabled || isSelected) {
+      onToggle(workshop.id);
+    }
+  };
+
   return (
     <Card
       className={cn(
@@ -55,10 +61,9 @@ function WorkshopCard<T extends Workshop>({
         isSelected && "border-primary ring-2 ring-primary/20",
         isDisabled && !isSelected && "opacity-50 cursor-not-allowed"
       )}
+      onClick={handleClick}
     >
-      <CardContent className="p-4" onClick={() => {
-        if (!isDisabled || isSelected) onToggle(workshop.id);
-      }}>
+      <CardContent className="p-4">
         <div className="flex items-start justify-between mb-2">
           <span
             className={cn(
@@ -70,9 +75,9 @@ function WorkshopCard<T extends Workshop>({
           </span>
           <Checkbox
             checked={isSelected}
-            onClick={(e) => e.stopPropagation()}
             disabled={isDisabled && !isSelected}
             aria-label={`Select ${workshop.title}`}
+            readOnly
           />
         </div>
 
