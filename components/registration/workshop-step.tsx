@@ -70,9 +70,6 @@ function WorkshopCard<T extends Workshop>({
           </span>
           <Checkbox
             checked={isSelected}
-            onCheckedChange={(checked) => {
-              if (!isDisabled || isSelected) onToggle(workshop.id);
-            }}
             onClick={(e) => e.stopPropagation()}
             disabled={isDisabled && !isSelected}
             aria-label={`Select ${workshop.title}`}
