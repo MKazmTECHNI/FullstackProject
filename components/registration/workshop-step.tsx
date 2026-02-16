@@ -46,22 +46,13 @@ function WorkshopCard<T extends Workshop>({
     ai: "bg-destructive/10 text-destructive",
   };
 
-  const handleClick = () => {
-    if (!isDisabled || isSelected) {
-      onToggle(workshop.id);
-    }
-  };
-
   return (
     <Card
       className={cn(
-        "transition-all duration-200 group cursor-pointer",
-        "hover:shadow-md",
-        "active:scale-[0.99]",
+        "transition-all duration-200 group",
         isSelected && "border-primary ring-2 ring-primary/20",
-        isDisabled && !isSelected && "opacity-50 cursor-not-allowed"
+        isDisabled && !isSelected && "opacity-50"
       )}
-      onClick={handleClick}
     >
       <CardContent className="p-4">
         <div className="flex items-start justify-between mb-2">
@@ -73,14 +64,24 @@ function WorkshopCard<T extends Workshop>({
           >
             {workshop.track.charAt(0).toUpperCase() + workshop.track.slice(1)}
           </span>
-          <div className="pointer-events-none">
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              if (!isDisabled || isSelected) {
+                onToggle(workshop.id);
+              }
+            }}
+            disabled={isDisabled && !isSelected}
+            className="flex items-center"
+            aria-label={`Select ${workshop.title}`}
+          >
             <Checkbox
               checked={isSelected}
-              onCheckedChange={() => {}}
               disabled={isDisabled && !isSelected}
-              aria-label={`Select ${workshop.title}`}
             />
-          </div>
+          </button>
         </div>
 
         <h3 className="font-semibold text-foreground text-sm mb-1">{workshop.title}</h3>
