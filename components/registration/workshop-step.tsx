@@ -73,11 +73,13 @@ function WorkshopCard<T extends Workshop>({
           >
             {workshop.track.charAt(0).toUpperCase() + workshop.track.slice(1)}
           </span>
-          <Checkbox
-            checked={isSelected}
-            disabled={isDisabled && !isSelected}
-            aria-label={`Select ${workshop.title}`}
-          />
+          <div className="pointer-events-none">
+            <Checkbox
+              checked={isSelected}
+              disabled={isDisabled && !isSelected}
+              aria-label={`Select ${workshop.title}`}
+            />
+          </div>
         </div>
 
         <h3 className="font-semibold text-foreground text-sm mb-1">{workshop.title}</h3>
