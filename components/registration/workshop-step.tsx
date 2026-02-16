@@ -40,10 +40,10 @@ function WorkshopCard<T extends Workshop>({
   const spotsLeft = workshop.capacity - workshop.enrolled;
 
   const trackColors: Record<string, string> = {
-    frontend: "bg-chart-1/10 text-chart-1",
-    backend: "bg-chart-2/10 text-chart-2",
-    devops: "bg-chart-3/10 text-chart-3",
-    ai: "bg-chart-4/10 text-chart-4",
+    frontend: "bg-primary/10 text-primary",
+    backend: "bg-accent/10 text-accent",
+    devops: "bg-muted text-muted-foreground",
+    ai: "bg-destructive/10 text-destructive",
   };
 
   return (
@@ -107,7 +107,7 @@ function WorkshopCard<T extends Workshop>({
           <div
             className={cn(
               "h-full rounded-full transition-all",
-              fillPercent > 80 ? "bg-destructive" : fillPercent > 50 ? "bg-chart-4" : "bg-accent"
+              fillPercent > 80 ? "bg-destructive" : fillPercent > 50 ? "bg-primary" : "bg-accent"
             )}
             style={{ width: `${fillPercent}%` }}
           />

@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { Tooltip as RechartsTooltipBase } from "recharts";
 import { cn } from "@/lib/utils";
 
 // =============================================
@@ -79,24 +80,7 @@ ChartContainer.displayName = "ChartContainer";
 // ChartTooltip and ChartTooltipContent
 // =============================================
 
-const ChartTooltip = ({
-  active,
-  payload,
-  label,
-  content,
-  ...props
-}: // eslint-disable-next-line @typescript-eslint/no-explicit-any
-any) => {
-  if (content) {
-    const Content = content.type || content;
-    return (
-      <Content active={active} payload={payload} label={label} {...(content.props || {})} {...props} />
-    );
-  }
-
-  return null;
-};
-ChartTooltip.displayName = "ChartTooltip";
+const ChartTooltip = RechartsTooltipBase;
 
 interface ChartTooltipContentProps {
   active?: boolean;

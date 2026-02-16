@@ -1,6 +1,5 @@
 "use client";
 
-import { useRef } from "react";
 import { useFormContext } from "react-hook-form";
 import type { RegistrationFormValues } from "@/lib/schema";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

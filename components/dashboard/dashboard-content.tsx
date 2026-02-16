@@ -12,7 +12,6 @@ import {
   PieChart,
   Pie,
   Cell,
-  Tooltip as RechartsTooltip,
 } from "recharts";
 import {
   Card,
@@ -211,8 +210,8 @@ export function DashboardContent() {
                         );
                       })}
                     </Pie>
-                    <RechartsTooltip
-                      content={({ active, payload }) => {
+                    <ChartTooltip
+                      content={({ active, payload }: { active?: boolean; payload?: Array<{ name?: string; value?: number }> }) => {
                         if (!active || !payload?.length) return null;
                         const data = payload[0];
                         return (
