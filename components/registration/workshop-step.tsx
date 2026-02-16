@@ -77,7 +77,6 @@ function WorkshopCard<T extends Workshop>({
             checked={isSelected}
             disabled={isDisabled && !isSelected}
             aria-label={`Select ${workshop.title}`}
-            readOnly
           />
         </div>
 
