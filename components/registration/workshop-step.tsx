@@ -55,11 +55,10 @@ function WorkshopCard<T extends Workshop>({
         isSelected && "border-primary ring-2 ring-primary/20",
         isDisabled && !isSelected && "opacity-50 cursor-not-allowed"
       )}
-      onClick={() => {
-        if (!isDisabled || isSelected) onToggle(workshop.id);
-      }}
     >
-      <CardContent className="p-4">
+      <CardContent className="p-4" onClick={() => {
+        if (!isDisabled || isSelected) onToggle(workshop.id);
+      }}>
         <div className="flex items-start justify-between mb-2">
           <span
             className={cn(
@@ -71,9 +70,10 @@ function WorkshopCard<T extends Workshop>({
           </span>
           <Checkbox
             checked={isSelected}
-            onCheckedChange={() => {
+            onCheckedChange={(checked) => {
               if (!isDisabled || isSelected) onToggle(workshop.id);
             }}
+            onClick={(e) => e.stopPropagation()}
             disabled={isDisabled && !isSelected}
             aria-label={`Select ${workshop.title}`}
           />
