@@ -66,19 +66,17 @@ function WorkshopCard<T extends Workshop>({
           </span>
           <button
             type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              if (!isDisabled || isSelected) {
-                onToggle(workshop.id);
-              }
-            }}
             disabled={isDisabled && !isSelected}
-            className="flex items-center"
+            className="flex items-center cursor-pointer"
             aria-label={`Select ${workshop.title}`}
           >
             <Checkbox
               checked={isSelected}
+              onCheckedChange={() => {
+                if (!isDisabled || isSelected) {
+                  onToggle(workshop.id);
+                }
+              }}
               disabled={isDisabled && !isSelected}
             />
           </button>
