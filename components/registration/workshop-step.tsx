@@ -76,6 +76,7 @@ function WorkshopCard<T extends Workshop>({
           <div className="pointer-events-none">
             <Checkbox
               checked={isSelected}
+              onCheckedChange={() => {}}
               disabled={isDisabled && !isSelected}
               aria-label={`Select ${workshop.title}`}
             />
